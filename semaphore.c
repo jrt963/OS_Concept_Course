@@ -1,10 +1,9 @@
 /***********************************************************************
- Example of use of pthreads library.
+ Pthreads library example
  
- Save this program in "mt.c", then compile using:
-    cc mt.c -pthread
- To execute, run the associated "a.out" file (or specify executable on
- the -o option). Each thread will increment a counter UPPER times.  The
+ compile using: gcc -pthread semaphore.c -o semaphore
+ 
+ Each thread will increment a counter UPPER times.  The
  counter is global, i.e., shared, and so the access to it is protected
  by a binary semaphore.
  ***********************************************************************/
@@ -25,25 +24,32 @@ sem_t semaphore;	      // global semaphore, used for mutual exclusion
 pthread_t tid[10];   // array of thread identifiers
 
 // ***********************************************************************
-// Function that each thread will execute.  If the semaphores work
-// properly, then the function will effectively do, count += UPPER.
+// Each thread will execute the function and do, counter += Upper. 
+// The semaphore will control access to counter and if the semaphore
+// works properly than counter will display the same amount as the number of iterations.
+// 6 threads and 1000 iterations per thread is the default.
+// If we change the value of the number of threads or iterations we can
+// observe the results.
 // ***********************************************************************
 
 void *
 increment( void *arg )
 {
-	/* Parameter passed is the thread number.  Since the parameter could be 
+	/* Thread number is the parameter passed.  Since the parameter could be 
 	 anything, it is passed as void * and must be "converted". */
 	/* following are local variables of the thread; other threads can't acccess these variables */
+	
 	int i,j,temp;
+	// Changed (int) arg; to (long) arg; due to error and stackexchange suggestion.
 	int id = (long) arg;
 	int spin; /* to slow down threads */
 
 	printf("Thread %d is startng\n",id);
 
-	// Simply iterate UPPER times, incrementing the counter each iteration.
-	// Since the variable counter is a shared/global variable, protect
-	// the modification of the variable by a semaphore.
+	// Iterates UPPER times, increments the counter per iteration.
+	// Must protext counter as is a global (shared) variable.
+	// Semaphores are used to control access and thus erroneous results.
+	// See more info on semaphore and their use for further explanation.
 
 	for(j = 0; j < UPPER; j++ )
 	{
