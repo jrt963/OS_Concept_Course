@@ -8,4 +8,5 @@ Programs and files related to a course on Operating System Concepts.
 3. simpleShell.c - A simple shell program. In computing, a shell is a user interface for access to an operating system's services.
 compile with: "gcc simpleShell.c -o simpleShell"
 
-4. 
+4. simpleInputOutput.c - A simple program demonstrating input and and output from the command line. 
+
