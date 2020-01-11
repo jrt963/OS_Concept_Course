@@ -5,8 +5,10 @@ Programs and files related to a course on Operating System Concepts.
 
 2. semaphore.c - A program demonstrating threads and semaphores. compile with "gcc -pthread semaphore.c -o semaphore"
 
-3. simpleShell.c - A simple shell program. In computing, a shell is a user interface for access to an operating system's services.
+3. shellprogram.c - A simple shell program. In computing, a shell is a user interface for access to an operating system's services.
 compile with: "gcc simpleShell.c -o simpleShell"
 
-4. simpleInputOutput.c - A simple program demonstrating input and and output from the command line. 
+4. simpleshell.c - A simple shell program.
+
+5. simpleInputOutput.c - A simple program demonstrating input and and output from the command line. 
 
